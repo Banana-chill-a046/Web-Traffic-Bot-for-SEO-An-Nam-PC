@@ -1,0 +1,13 @@
+{
+  "name": "web-traffic-bot",
+  "version": "1.0.0",
+  "description": "Bot tăng traffic SEO",
+  "main": "bot.js",
+  "scripts": {
+    "start": "node bot.js"
+  },
+  "dependencies": {
+    "puppeteer": "^21.0.0",
+    "axios": "^1.6.0"
+  }
+}
