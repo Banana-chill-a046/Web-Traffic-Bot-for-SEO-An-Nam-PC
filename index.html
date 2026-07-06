@@ -29,22 +29,22 @@
         <div class="grid grid-cols-2 md:grid-cols-4 gap-4 mb-8">
             <div class="bg-white/5 backdrop-blur-lg rounded-xl p-4 text-center border border-white/10 hover:border-blue-500/50 transition">
                 <div class="text-2xl">🖥️</div>
-                <div class="text-sm font-semibold text-blue-400">annampc.io.vn</div>
+                <div class="text-sm font-semibold text-blue-400">AnnamPC</div>
                 <div class="text-xs text-gray-500">www.annampc.io.vn</div>
             </div>
             <div class="bg-white/5 backdrop-blur-lg rounded-xl p-4 text-center border border-white/10 hover:border-green-500/50 transition">
                 <div class="text-2xl">🌐</div>
-                <div class="text-sm font-semibold text-green-400">nammc.click</div>
+                <div class="text-sm font-semibold text-green-400">NamMC</div>
                 <div class="text-xs text-gray-500">nammc.nammc.click</div>
             </div>
             <div class="bg-white/5 backdrop-blur-lg rounded-xl p-4 text-center border border-white/10 hover:border-yellow-500/50 transition">
                 <div class="text-2xl">🧪</div>
-                <div class="text-sm font-semibold text-yellow-400">testpc.click</div>
-                <div class="text-xs text-gray-500">testpc.nammc.click</div>
+                <div class="text-sm font-semibold text-yellow-400">TestPC</div>
+                <div class="text-xs text-gray-500">testpc.annampc.io.vn</div>
             </div>
             <div class="bg-white/5 backdrop-blur-lg rounded-xl p-4 text-center border border-white/10 hover:border-pink-500/50 transition">
                 <div class="text-2xl">🏠</div>
-                <div class="text-sm font-semibold text-pink-400">hoanghaopc</div>
+                <div class="text-sm font-semibold text-pink-400">HoangHao</div>
                 <div class="text-xs text-gray-500">www.hoanghaopc.com</div>
             </div>
         </div>
@@ -99,7 +99,7 @@
         const websites = [
             { name: 'AnnamPC', url: 'https://www.annampc.io.vn' },
             { name: 'NamMC', url: 'https://nammc.nammc.click' },
-            { name: 'TestPC', url: 'https://testpc.nammc.click' },
+            { name: 'TestPC', url: 'https://testpc.annampc.io.vn' },
             { name: 'HoangHaoPC', url: 'https://www.hoanghaopc.com' }
         ];
 
@@ -154,7 +154,6 @@
                     addLog(`  ❌ ${w.name} - Lỗi: ${e.message}`, '#f87171');
                     failed++;
                 }
-                // Đợi 1.5 giây giữa các lần
                 await new Promise(r => setTimeout(r, 1500));
             }
 
@@ -186,7 +185,6 @@
                 }
             } catch (e) {
                 addLog(`❌ Lỗi: ${e.message}`, '#f87171');
-                // Fallback: chạy bot thường
                 addLog('🔄 Chuyển sang chạy bot thường...', '#fbbf24');
                 await runBot();
             }
