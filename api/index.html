@@ -1,0 +1,441 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>🚀 AnnamPC Bot - Tăng Traffic SEO</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+    <style>
+        @keyframes float {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-10px); }
+        }
+        @keyframes pulse {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.5; }
+        }
+        @keyframes spin-slow {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+        }
+        .float-animation { animation: float 3s ease-in-out infinite; }
+        .pulse-animation { animation: pulse 2s ease-in-out infinite; }
+        .spin-slow { animation: spin-slow 10s linear infinite; }
+        .country-flag { font-size: 2rem; transition: transform 0.3s; }
+        .country-flag:hover { transform: scale(1.3) rotate(10deg); }
+        .glass {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+        .gradient-text {
+            background: linear-gradient(135deg, #f093fb 0%, #f5576c 50%, #4facfe 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-size: 200% 200%;
+            animation: gradient 3s ease infinite;
+        }
+        @keyframes gradient {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+        .stats-card {
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 20px;
+            padding: 20px;
+            transition: all 0.3s;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        .stats-card:hover {
+            transform: translateY(-5px);
+            border-color: rgba(79, 172, 254, 0.5);
+            box-shadow: 0 20px 60px rgba(79, 172, 254, 0.2);
+        }
+        .flag-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(60px, 1fr));
+            gap: 10px;
+        }
+        .flag-item {
+            text-align: center;
+            padding: 8px;
+            border-radius: 12px;
+            background: rgba(255, 255, 255, 0.05);
+            transition: all 0.3s;
+            cursor: pointer;
+            font-size: 0.8rem;
+        }
+        .flag-item:hover {
+            background: rgba(79, 172, 254, 0.2);
+            transform: scale(1.1);
+        }
+        .flag-item .flag { font-size: 1.8rem; display: block; }
+        .flag-item .name { font-size: 0.6rem; color: #94a3b8; margin-top: 4px; }
+        .progress-ring {
+            width: 120px;
+            height: 120px;
+            border-radius: 50%;
+            background: conic-gradient(
+                from 0deg,
+                #4facfe 0%,
+                #f093fb 25%,
+                #f5576c 50%,
+                #ffecd2 75%,
+                #4facfe 100%
+            );
+            animation: spin-slow 10s linear infinite;
+        }
+        .progress-ring-inner {
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            background: #0f0f1a;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body class="bg-gradient-to-br from-gray-900 via-purple-900 to-gray-900 min-h-screen text-white">
+    
+    <!-- Background Particles -->
+    <div class="fixed inset-0 pointer-events-none overflow-hidden">
+        <div class="absolute top-20 left-10 w-64 h-64 bg-purple-500 rounded-full opacity-10 blur-3xl animate-pulse"></div>
+        <div class="absolute bottom-20 right-10 w-96 h-96 bg-blue-500 rounded-full opacity-10 blur-3xl animate-pulse" style="animation-delay: 2s;"></div>
+        <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-128 h-128 bg-pink-500 rounded-full opacity-5 blur-3xl"></div>
+    </div>
+
+    <div class="relative container mx-auto px-4 py-8 max-w-6xl">
+        
+        <!-- Header -->
+        <div class="text-center mb-12">
+            <div class="float-animation inline-block">
+                <span class="text-6xl">🚀</span>
+            </div>
+            <h1 class="text-5xl font-bold mt-4 gradient-text">
+                AnnamPC Bot
+            </h1>
+            <p class="text-gray-400 mt-2 text-lg">
+                <i class="fas fa-globe-asia mr-2"></i>
+                Tăng traffic quốc tế - Boost SEO toàn cầu
+            </p>
+            <div class="flex justify-center gap-2 mt-4 flex-wrap">
+                <span class="px-3 py-1 bg-green-500/20 text-green-400 rounded-full text-sm border border-green-500/30">
+                    <i class="fas fa-check-circle mr-1"></i> Đang hoạt động
+                </span>
+                <span class="px-3 py-1 bg-blue-500/20 text-blue-400 rounded-full text-sm border border-blue-500/30">
+                    <i class="fas fa-users mr-1"></i> 50+ quốc gia
+                </span>
+                <span class="px-3 py-1 bg-purple-500/20 text-purple-400 rounded-full text-sm border border-purple-500/30">
+                    <i class="fas fa-rocket mr-1"></i> 90k visits/ngày
+                </span>
+            </div>
+        </div>
+
+        <!-- Main Controls -->
+        <div class="glass rounded-3xl p-8 mb-8">
+            <div class="grid md:grid-cols-2 gap-6">
+                <!-- Left: Control Panel -->
+                <div>
+                    <h3 class="text-xl font-semibold mb-4">
+                        <i class="fas fa-sliders-h text-blue-400 mr-2"></i>
+                        Điều khiển
+                    </h3>
+                    
+                    <div class="space-y-4">
+                        <div>
+                            <label class="text-sm text-gray-400 block mb-2">
+                                <i class="fas fa-bullseye mr-1"></i> Mục tiêu (visits)
+                            </label>
+                            <input type="number" id="targetInput" value="90000" 
+                                   class="w-full px-4 py-3 bg-black/30 border border-gray-700 rounded-xl text-white focus:border-blue-500 focus:outline-none transition" />
+                        </div>
+                        
+                        <div>
+                            <label class="text-sm text-gray-400 block mb-2">
+                                <i class="fas fa-flag mr-1"></i> Số quốc gia
+                            </label>
+                            <select id="countrySelect" class="w-full px-4 py-3 bg-black/30 border border-gray-700 rounded-xl text-white focus:border-blue-500 focus:outline-none transition">
+                                <option value="50">🌍 Tất cả (50 nước)</option>
+                                <option value="30">30 nước</option>
+                                <option value="20">20 nước</option>
+                                <option value="10">10 nước</option>
+                                <option value="5">5 nước</option>
+                            </select>
+                        </div>
+
+                        <div>
+                            <label class="text-sm text-gray-400 block mb-2">
+                                <i class="fas fa-bolt mr-1"></i> Tốc độ (concurrent)
+                            </label>
+                            <select id="concurrentSelect" class="w-full px-4 py-3 bg-black/30 border border-gray-700 rounded-xl text-white focus:border-blue-500 focus:outline-none transition">
+                                <option value="50">⚡ Turbo (50)</option>
+                                <option value="30">🚀 Nhanh (30)</option>
+                                <option value="10">🐢 Vừa (10)</option>
+                            </select>
+                        </div>
+
+                        <button onclick="startBot()" id="startBtn"
+                                class="w-full py-4 bg-gradient-to-r from-blue-500 via-purple-500 to-pink-500 rounded-xl font-bold text-lg transition hover:scale-105 active:scale-95 shadow-lg shadow-purple-500/30">
+                            <i class="fas fa-play mr-2"></i>
+                            🚀 BẮT ĐẦU TĂNG TRAFFIC
+                        </button>
+                        
+                        <button onclick="stopBot()" id="stopBtn"
+                                class="w-full py-3 bg-red-500/20 border border-red-500/30 rounded-xl font-semibold text-red-400 transition hover:bg-red-500/30 hidden">
+                            <i class="fas fa-stop mr-2"></i>
+                            Dừng lại
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Right: Stats -->
+                <div>
+                    <h3 class="text-xl font-semibold mb-4">
+                        <i class="fas fa-chart-line text-green-400 mr-2"></i>
+                        Thống kê
+                    </h3>
+                    
+                    <div class="grid grid-cols-2 gap-4">
+                        <div class="stats-card text-center">
+                            <div class="text-3xl font-bold text-blue-400" id="totalVisits">0</div>
+                            <div class="text-sm text-gray-400">Tổng visits</div>
+                        </div>
+                        <div class="stats-card text-center">
+                            <div class="text-3xl font-bold text-green-400" id="successVisits">0</div>
+                            <div class="text-sm text-gray-400">Thành công</div>
+                        </div>
+                        <div class="stats-card text-center">
+                            <div class="text-3xl font-bold text-yellow-400" id="progressPercent">0%</div>
+                            <div class="text-sm text-gray-400">Tiến độ</div>
+                        </div>
+                        <div class="stats-card text-center">
+                            <div class="text-3xl font-bold text-purple-400" id="countriesCount">0</div>
+                            <div class="text-sm text-gray-400">Quốc gia</div>
+                        </div>
+                    </div>
+
+                    <!-- Progress Ring -->
+                    <div class="flex justify-center mt-6">
+                        <div class="relative">
+                            <div class="progress-ring flex items-center justify-center">
+                                <div class="progress-ring-inner">
+                                    <span id="ringPercent">0%</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Countries Grid -->
+        <div class="glass rounded-3xl p-8 mb-8">
+            <h3 class="text-xl font-semibold mb-4">
+                <i class="fas fa-globe-americas text-green-400 mr-2"></i>
+                Quốc gia đang tăng traffic
+                <span class="text-sm text-gray-400 font-normal ml-2">(Click vào cờ để test riêng)</span>
+            </h3>
+            <div class="flag-grid" id="countryGrid">
+                <!-- Flags will be loaded here -->
+            </div>
+        </div>
+
+        <!-- Result Log -->
+        <div class="glass rounded-3xl p-8">
+            <h3 class="text-xl font-semibold mb-4">
+                <i class="fas fa-terminal text-yellow-400 mr-2"></i>
+                Log thời gian thực
+            </h3>
+            <div id="logContainer" class="bg-black/40 rounded-xl p-4 h-48 overflow-y-auto font-mono text-sm">
+                <div class="text-green-400">🚀 Bot sẵn sàng... Nhấn "BẮT ĐẦU" để chạy</div>
+            </div>
+        </div>
+
+    </div>
+
+    <script>
+        const LOGO_EMOJIS = ['🚀', '🔥', '⚡', '💪', '🌟', '🎯', '🏆', '👑'];
+        let currentEmoji = 0;
+
+        // Load countries
+        const countries = [
+            { code: 'US', flag: '🇺🇸', name: 'Mỹ' },
+            { code: 'GB', flag: '🇬🇧', name: 'Anh' },
+            { code: 'DE', flag: '🇩🇪', name: 'Đức' },
+            { code: 'FR', flag: '🇫🇷', name: 'Pháp' },
+            { code: 'JP', flag: '🇯🇵', name: 'Nhật' },
+            { code: 'KR', flag: '🇰🇷', name: 'Hàn' },
+            { code: 'IN', flag: '🇮🇳', name: 'Ấn' },
+            { code: 'BR', flag: '🇧🇷', name: 'Brazil' },
+            { code: 'AU', flag: '🇦🇺', name: 'Úc' },
+            { code: 'CA', flag: '🇨🇦', name: 'Canada' },
+            { code: 'SG', flag: '🇸🇬', name: 'Singapore' },
+            { code: 'MY', flag: '🇲🇾', name: 'Malaysia' },
+            { code: 'TH', flag: '🇹🇭', name: 'Thái' },
+            { code: 'VN', flag: '🇻🇳', name: 'Việt' },
+            { code: 'PH', flag: '🇵🇭', name: 'Philippines' },
+            { code: 'ID', flag: '🇮🇩', name: 'Indonesia' },
+            { code: 'NZ', flag: '🇳🇿', name: 'New Zealand' },
+            { code: 'ZA', flag: '🇿🇦', name: 'Nam Phi' },
+            { code: 'EG', flag: '🇪🇬', name: 'Ai Cập' },
+            { code: 'AE', flag: '🇦🇪', name: 'UAE' },
+            { code: 'SA', flag: '🇸🇦', name: 'Ả Rập' },
+            { code: 'RU', flag: '🇷🇺', name: 'Nga' },
+            { code: 'PL', flag: '🇵🇱', name: 'Ba Lan' },
+            { code: 'NL', flag: '🇳🇱', name: 'Hà Lan' },
+            { code: 'BE', flag: '🇧🇪', name: 'Bỉ' },
+            { code: 'SE', flag: '🇸🇪', name: 'Thụy Điển' },
+            { code: 'NO', flag: '🇳🇴', name: 'Na Uy' },
+            { code: 'DK', flag: '🇩🇰', name: 'Đan Mạch' },
+            { code: 'FI', flag: '🇫🇮', name: 'Phần Lan' },
+            { code: 'CH', flag: '🇨🇭', name: 'Thụy Sĩ' },
+            { code: 'AT', flag: '🇦🇹', name: 'Áo' },
+            { code: 'IT', flag: '🇮🇹', name: 'Ý' },
+            { code: 'ES', flag: '🇪🇸', name: 'Tây Ban Nha' },
+            { code: 'PT', flag: '🇵🇹', name: 'Bồ Đào Nha' },
+            { code: 'GR', flag: '🇬🇷', name: 'Hy Lạp' },
+            { code: 'TR', flag: '🇹🇷', name: 'Thổ Nhĩ Kỳ' },
+            { code: 'IL', flag: '🇮🇱', name: 'Israel' },
+            { code: 'PK', flag: '🇵🇰', name: 'Pakistan' },
+            { code: 'BD', flag: '🇧🇩', name: 'Bangladesh' },
+            { code: 'LK', flag: '🇱🇰', name: 'Sri Lanka' },
+            { code: 'NG', flag: '🇳🇬', name: 'Nigeria' },
+            { code: 'KE', flag: '🇰🇪', name: 'Kenya' },
+            { code: 'AR', flag: '🇦🇷', name: 'Argentina' },
+            { code: 'CL', flag: '🇨🇱', name: 'Chile' },
+            { code: 'CO', flag: '🇨🇴', name: 'Colombia' },
+            { code: 'PE', flag: '🇵🇪', name: 'Peru' },
+            { code: 'MX', flag: '🇲🇽', name: 'Mexico' }
+        ];
+
+        // Render country grid
+        function renderCountries() {
+            const grid = document.getElementById('countryGrid');
+            grid.innerHTML = countries.map(c => `
+                <div class="flag-item" onclick="testCountry('${c.code}')" title="Test ${c.name}">
+                    <span class="flag">${c.flag}</span>
+                    <span class="name">${c.name}</span>
+                </div>
+            `).join('');
+        }
+        renderCountries();
+
+        function testCountry(code) {
+            const url = `/api/massive?country=${code}&target=100`;
+            addLog(`🧪 Đang test ${countries.find(c => c.code === code)?.flag} ${code}...`, 'yellow');
+            fetch(url)
+                .then(r => r.json())
+                .then(data => {
+                    addLog(`✅ Test ${code}: ${data.totalVisits || data.achieved || 0} visits`, 'green');
+                })
+                .catch(e => addLog(`❌ Lỗi test ${code}: ${e.message}`, 'red'));
+        }
+
+        function addLog(msg, color = 'white') {
+            const container = document.getElementById('logContainer');
+            const colors = {
+                green: 'text-green-400',
+                yellow: 'text-yellow-400',
+                red: 'text-red-400',
+                blue: 'text-blue-400',
+                purple: 'text-purple-400',
+                white: 'text-white'
+            };
+            const time = new Date().toLocaleTimeString();
+            container.innerHTML += `<div class="${colors[color] || 'text-white'}">[${time}] ${msg}</div>`;
+            container.scrollTop = container.scrollHeight;
+        }
+
+        function updateStats(total, success, target) {
+            document.getElementById('totalVisits').textContent = total.toLocaleString();
+            document.getElementById('successVisits').textContent = success.toLocaleString();
+            const percent = target > 0 ? Math.min((total / target) * 100, 100) : 0;
+            document.getElementById('progressPercent').textContent = percent.toFixed(1) + '%';
+            document.getElementById('ringPercent').textContent = percent.toFixed(0) + '%';
+            
+            // Update ring
+            const ring = document.querySelector('.progress-ring');
+            ring.style.background = `conic-gradient(from 0deg, #4facfe 0%, #f093fb ${percent}%, #f5576c ${percent}%, #ffecd2 ${Math.min(percent + 10, 100)}%, #4facfe 100%)`;
+            
+            // Update countries count
+            document.getElementById('countriesCount').textContent = Math.floor(total / 5) || 0;
+        }
+
+        let isRunning = false;
+
+        async function startBot() {
+            if (isRunning) return;
+            isRunning = true;
+            
+            const target = document.getElementById('targetInput').value || 90000;
+            const countries = document.getElementById('countrySelect').value || 50;
+            const concurrent = document.getElementById('concurrentSelect').value || 50;
+            
+            document.getElementById('startBtn').innerHTML = '<i class="fas fa-spinner fa-spin mr-2"></i>ĐANG CHẠY...';
+            document.getElementById('startBtn').disabled = true;
+            document.getElementById('stopBtn').classList.remove('hidden');
+            
+            addLog(`🚀 BẮT ĐẦU: Target ${target} visits, ${countries} nước, concurrent ${concurrent}`, 'green');
+            
+            const url = `/api/massive?target=${target}&countries=${countries}&concurrent=${concurrent}`;
+            
+            try {
+                const response = await fetch(url);
+                const data = await response.json();
+                
+                if (data.success) {
+                    addLog(`🎉 ${data.message}`, 'green');
+                    addLog(`⏱️ Thời gian: ${data.totalTime || 'N/A'}`, 'blue');
+                    
+                    // Update stats
+                    const achieved = data.achieved || data.totalVisits || 0;
+                    updateStats(achieved, data.totalVisits || achieved, target);
+                    
+                    // Show country stats
+                    if (data.countries) {
+                        data.countries.forEach(c => {
+                            addLog(`${c.flag} ${c.name}: ${c.visits} visits (${c.success} thành công)`, 'purple');
+                        });
+                    }
+                } else {
+                    addLog(`❌ Lỗi: ${data.error || 'Không xác định'}`, 'red');
+                }
+            } catch (error) {
+                addLog(`❌ Lỗi kết nối: ${error.message}`, 'red');
+            }
+            
+            document.getElementById('startBtn').innerHTML = '<i class="fas fa-play mr-2"></i>🚀 BẮT ĐẦU TĂNG TRAFFIC';
+            document.getElementById('startBtn').disabled = false;
+            document.getElementById('stopBtn').classList.add('hidden');
+            isRunning = false;
+        }
+
+        function stopBot() {
+            isRunning = false;
+            addLog('⏹️ Đã dừng bot', 'yellow');
+            document.getElementById('startBtn').innerHTML = '<i class="fas fa-play mr-2"></i>🚀 BẮT ĐẦU TĂNG TRAFFIC';
+            document.getElementById('startBtn').disabled = false;
+            document.getElementById('stopBtn').classList.add('hidden');
+        }
+
+        // Auto refresh emoji
+        setInterval(() => {
+            const emojis = ['🚀', '🔥', '⚡', '💪', '🌟', '🎯', '🏆'];
+            const emoji = document.querySelector('.float-animation span');
+            if (emoji) {
+                emoji.textContent = emojis[Math.floor(Math.random() * emojis.length)];
+            }
+        }, 3000);
+
+        // Initial log
+        addLog('🌟 Bot đã sẵn sàng! Chọn cấu hình và nhấn "BẮT ĐẦU"', 'blue');
+        addLog('💡 Tip: Click vào cờ để test riêng từng quốc gia', 'yellow');
+    </script>
+
+</body>
+</html>
