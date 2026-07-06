@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>AnnamPC SEO Bot</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gradient-to-br from-gray-900 via-purple-900 to-gray-900 min-h-screen text-white">
+    <div class="container mx-auto px-4 py-16 text-center">
+        <div class="text-7xl mb-6">🚀</div>
+        <h1 class="text-5xl font-bold bg-gradient-to-r from-blue-400 via-purple-400 to-pink-400 bg-clip-text text-transparent">
+            AnnamPC Bot
+        </h1>
+        <p class="text-xl text-gray-400 mt-4">🌍 Tăng traffic quốc tế - Boost SEO</p>
+        
+        <div class="grid md:grid-cols-3 gap-6 max-w-3xl mx-auto mt-12">
+            <div class="bg-white/5 backdrop-blur-lg rounded-2xl p-6 border border-white/10">
+                <div class="text-4xl font-bold text-blue-400">50+</div>
+                <div class="text-gray-400 mt-2">Quốc gia</div>
+            </div>
+            <div class="bg-white/5 backdrop-blur-lg rounded-2xl p-6 border border-white/10">
+                <div class="text-4xl font-bold text-green-400">90K</div>
+                <div class="text-gray-400 mt-2">Visits/ngày</div>
+            </div>
+            <div class="bg-white/5 backdrop-blur-lg rounded-2xl p-6 border border-white/10">
+                <div class="text-4xl font-bold text-purple-400">⚡</div>
+                <div class="text-gray-400 mt-2">Tăng tốc SEO</div>
+            </div>
+        </div>
+        
+        <button onclick="startBot()" class="mt-12 px-12 py-4 bg-gradient-to-r from-blue-500 to-purple-500 rounded-2xl text-xl font-bold hover:scale-105 transition shadow-lg shadow-purple-500/30">
+            🚀 BẮT ĐẦU TĂNG TRAFFIC
+        </button>
+        
+        <div id="log" class="mt-8 max-w-2xl mx-auto bg-black/50 rounded-xl p-6 text-left font-mono text-sm h-48 overflow-y-auto border border-white/10">
+            <div class="text-green-400">✅ Bot đã sẵn sàng!</div>
+        </div>
+    </div>
+
+    <script>
+        function addLog(msg, color = 'text-green-400') {
+            const log = document.getElementById('log');
+            const time = new Date().toLocaleTimeString();
+            log.innerHTML += `<div class="${color}">[${time}] ${msg}</div>`;
+            log.scrollTop = log.scrollHeight;
+        }
+
+        async function startBot() {
+            addLog('🚀 Đang chạy bot...', 'text-yellow-400');
+            
+            try {
+                const res = await fetch('/api/bot');
+                const data = await res.json();
+                
+                if (data.success) {
+                    addLog(`✅ Thành công: ${data.message}`, 'text-green-400');
+                } else {
+                    addLog(`❌ Lỗi: ${data.error}`, 'text-red-400');
+                }
+            } catch(e) {
+                addLog(`❌ Lỗi kết nối: ${e.message}`, 'text-red-400');
+            }
+        }
+
+        // Chạy tự động khi load trang
+        setTimeout(startBot, 1000);
+    </script>
+</body>
+</html>
