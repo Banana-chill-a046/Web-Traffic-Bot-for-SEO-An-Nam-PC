@@ -3,112 +3,156 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>AnnamPC SEO Bot</title>
+    <title>AnnamPC SEO Bot 24/7</title>
     <script src="https://cdn.tailwindcss.com"></script>
 </head>
 <body class="bg-gradient-to-br from-gray-900 via-purple-900 to-gray-900 min-h-screen text-white">
 
-    <div class="container mx-auto px-4 py-8 max-w-4xl">
+    <div class="container mx-auto px-4 py-8 max-w-5xl">
         
         <!-- Header -->
         <div class="text-center mb-8">
-            <div class="text-6xl mb-4">🚀</div>
+            <div class="text-6xl mb-4 animate-bounce">🚀</div>
             <h1 class="text-4xl font-bold bg-gradient-to-r from-blue-400 via-purple-400 to-pink-400 bg-clip-text text-transparent">
-                AnnamPC SEO Bot
+                AnnamPC SEO Bot 24/7
             </h1>
-            <p class="text-gray-400 mt-2">🌍 Tăng traffic cho 4 website</p>
+            <p class="text-gray-400 mt-2">🌍 Tăng traffic tự động 24/7 cho 4 website</p>
             
             <div class="flex justify-center gap-2 flex-wrap mt-4">
-                <span class="px-3 py-1 bg-green-500/20 text-green-400 rounded-full text-sm border border-green-500/30">✅ Hoạt động</span>
+                <span class="px-3 py-1 bg-green-500/20 text-green-400 rounded-full text-sm border border-green-500/30">✅ 24/7</span>
                 <span class="px-3 py-1 bg-blue-500/20 text-blue-400 rounded-full text-sm border border-blue-500/30">🌐 4 Website</span>
-                <span class="px-3 py-1 bg-purple-500/20 text-purple-400 rounded-full text-sm border border-purple-500/30">⚡ 90k visits</span>
+                <span class="px-3 py-1 bg-purple-500/20 text-purple-400 rounded-full text-sm border border-purple-500/30">⚡ Auto</span>
             </div>
         </div>
 
-        <!-- 4 Website -->
+        <!-- 4 Website - Hiển thị số lượt -->
         <div class="grid grid-cols-2 md:grid-cols-4 gap-4 mb-8">
-            <div class="bg-white/5 backdrop-blur-lg rounded-xl p-4 text-center border border-white/10">
-                <div class="text-2xl">🖥️</div>
+            <div id="card1" class="bg-white/5 backdrop-blur-lg rounded-xl p-4 text-center border border-white/10 hover:border-blue-500/50 transition">
+                <div class="text-3xl">🖥️</div>
                 <div class="text-sm font-semibold text-blue-400">AnnamPC</div>
                 <div class="text-xs text-gray-500">www.annampc.io.vn</div>
-                <div id="status1" class="text-xs mt-1 text-gray-500">⏳ Chờ...</div>
+                <div class="text-2xl font-bold text-blue-400 mt-2" id="count1">0</div>
+                <div class="text-xs text-gray-500">lượt truy cập</div>
+                <div id="status1" class="text-xs mt-1 text-green-400">✅ Đang chạy</div>
             </div>
-            <div class="bg-white/5 backdrop-blur-lg rounded-xl p-4 text-center border border-white/10">
-                <div class="text-2xl">🌐</div>
+            <div id="card2" class="bg-white/5 backdrop-blur-lg rounded-xl p-4 text-center border border-white/10 hover:border-green-500/50 transition">
+                <div class="text-3xl">🌐</div>
                 <div class="text-sm font-semibold text-green-400">NamMC</div>
                 <div class="text-xs text-gray-500">nammc.nammc.click</div>
-                <div id="status2" class="text-xs mt-1 text-gray-500">⏳ Chờ...</div>
+                <div class="text-2xl font-bold text-green-400 mt-2" id="count2">0</div>
+                <div class="text-xs text-gray-500">lượt truy cập</div>
+                <div id="status2" class="text-xs mt-1 text-green-400">✅ Đang chạy</div>
             </div>
-            <div class="bg-white/5 backdrop-blur-lg rounded-xl p-4 text-center border border-white/10">
-                <div class="text-2xl">🧪</div>
+            <div id="card3" class="bg-white/5 backdrop-blur-lg rounded-xl p-4 text-center border border-white/10 hover:border-yellow-500/50 transition">
+                <div class="text-3xl">🧪</div>
                 <div class="text-sm font-semibold text-yellow-400">TestPC</div>
                 <div class="text-xs text-gray-500">testpc.annampc.io.vn</div>
-                <div id="status3" class="text-xs mt-1 text-gray-500">⏳ Chờ...</div>
+                <div class="text-2xl font-bold text-yellow-400 mt-2" id="count3">0</div>
+                <div class="text-xs text-gray-500">lượt truy cập</div>
+                <div id="status3" class="text-xs mt-1 text-green-400">✅ Đang chạy</div>
             </div>
-            <div class="bg-white/5 backdrop-blur-lg rounded-xl p-4 text-center border border-white/10">
-                <div class="text-2xl">🏠</div>
+            <div id="card4" class="bg-white/5 backdrop-blur-lg rounded-xl p-4 text-center border border-white/10 hover:border-pink-500/50 transition">
+                <div class="text-3xl">🏠</div>
                 <div class="text-sm font-semibold text-pink-400">HoangHao</div>
                 <div class="text-xs text-gray-500">www.hoanghaopc.com</div>
-                <div id="status4" class="text-xs mt-1 text-gray-500">⏳ Chờ...</div>
+                <div class="text-2xl font-bold text-pink-400 mt-2" id="count4">0</div>
+                <div class="text-xs text-gray-500">lượt truy cập</div>
+                <div id="status4" class="text-xs mt-1 text-green-400">✅ Đang chạy</div>
+            </div>
+        </div>
+
+        <!-- Tổng -->
+        <div class="grid grid-cols-2 md:grid-cols-4 gap-4 mb-8">
+            <div class="bg-white/5 backdrop-blur-lg rounded-xl p-4 text-center border border-white/10">
+                <div class="text-3xl font-bold text-blue-400" id="totalVisits">0</div>
+                <div class="text-xs text-gray-400">Tổng lượt truy cập</div>
+            </div>
+            <div class="bg-white/5 backdrop-blur-lg rounded-xl p-4 text-center border border-white/10">
+                <div class="text-3xl font-bold text-green-400" id="successVisits">0</div>
+                <div class="text-xs text-gray-400">Thành công</div>
+            </div>
+            <div class="bg-white/5 backdrop-blur-lg rounded-xl p-4 text-center border border-white/10">
+                <div class="text-3xl font-bold text-yellow-400" id="todayVisits">0</div>
+                <div class="text-xs text-gray-400">Hôm nay</div>
+            </div>
+            <div class="bg-white/5 backdrop-blur-lg rounded-xl p-4 text-center border border-white/10">
+                <div class="text-3xl font-bold text-purple-400" id="runTime">00:00:00</div>
+                <div class="text-xs text-gray-400">Thời gian chạy</div>
             </div>
         </div>
 
         <!-- Nút điều khiển -->
         <div class="text-center mb-8">
-            <button onclick="runBot()" id="btnRun" 
+            <button onclick="toggleBot()" id="btnToggle" 
                     class="px-12 py-4 bg-gradient-to-r from-blue-500 to-purple-500 rounded-2xl text-xl font-bold hover:scale-105 transition shadow-lg shadow-purple-500/30">
-                🚀 CHẠY BOT
+                ▶️ BẬT BOT 24/7
             </button>
-            <button onclick="stopBot()" id="btnStop" 
-                    class="ml-4 px-8 py-4 bg-gradient-to-r from-red-500 to-orange-500 rounded-2xl text-xl font-bold hover:scale-105 transition shadow-lg shadow-red-500/30 hidden">
-                ⏹️ TẠM DỪNG
+            <button onclick="resetCounts()" 
+                    class="ml-4 px-8 py-4 bg-red-500/20 border border-red-500/30 rounded-2xl text-xl font-bold hover:bg-red-500/30 transition">
+                🔄 RESET
             </button>
-            <button onclick="runMassive()" id="btnMassive" 
-                    class="ml-4 px-8 py-4 bg-gradient-to-r from-green-500 to-teal-500 rounded-2xl text-xl font-bold hover:scale-105 transition shadow-lg shadow-green-500/30">
-                ⚡ 90K
-            </button>
-        </div>
-
-        <!-- Thống kê -->
-        <div class="grid grid-cols-2 md:grid-cols-4 gap-4 mb-8">
-            <div class="bg-white/5 backdrop-blur-lg rounded-xl p-4 text-center border border-white/10">
-                <div class="text-2xl font-bold text-blue-400" id="totalVisits">0</div>
-                <div class="text-xs text-gray-400">Tổng visits</div>
-            </div>
-            <div class="bg-white/5 backdrop-blur-lg rounded-xl p-4 text-center border border-white/10">
-                <div class="text-2xl font-bold text-green-400" id="successVisits">0</div>
-                <div class="text-xs text-gray-400">Thành công</div>
-            </div>
-            <div class="bg-white/5 backdrop-blur-lg rounded-xl p-4 text-center border border-white/10">
-                <div class="text-2xl font-bold text-yellow-400" id="progressPercent">0%</div>
-                <div class="text-xs text-gray-400">Tiến độ</div>
-            </div>
-            <div class="bg-white/5 backdrop-blur-lg rounded-xl p-4 text-center border border-white/10">
-                <div class="text-2xl font-bold text-purple-400" id="countryCount">4</div>
-                <div class="text-xs text-gray-400">Website</div>
-            </div>
         </div>
 
         <!-- Log -->
         <div class="bg-black/50 backdrop-blur-lg rounded-xl p-6 border border-white/10">
             <div class="flex justify-between items-center mb-3">
-                <h3 class="font-semibold text-gray-300">📋 Log</h3>
-                <div>
-                    <button onclick="clearLog()" class="text-xs text-gray-500 hover:text-gray-300 mr-3">Xóa log</button>
-                    <span id="timerDisplay" class="text-xs text-gray-500">⏱️ 00:00</span>
-                </div>
+                <h3 class="font-semibold text-gray-300">📋 Log thời gian thực</h3>
+                <button onclick="clearLog()" class="text-xs text-gray-500 hover:text-gray-300">Xóa log</button>
             </div>
-            <div id="logBox" class="bg-black/50 rounded-lg p-4 h-64 overflow-y-auto font-mono text-sm"></div>
+            <div id="logBox" class="bg-black/50 rounded-lg p-4 h-48 overflow-y-auto font-mono text-sm"></div>
         </div>
 
     </div>
 
     <script>
         const logBox = document.getElementById('logBox');
-        let isRunning = false;
-        let shouldStop = false;
+        let botRunning = false;
+        let botInterval = null;
         let timerInterval = null;
         let seconds = 0;
+
+        // Khởi tạo localStorage
+        const STORAGE_KEY = 'annampc_bot_data';
+        let data = loadData();
+
+        function loadData() {
+            const saved = localStorage.getItem(STORAGE_KEY);
+            if (saved) {
+                try {
+                    return JSON.parse(saved);
+                } catch (e) {}
+            }
+            return {
+                counts: { 1: 0, 2: 0, 3: 0, 4: 0 },
+                total: 0,
+                success: 0,
+                today: 0,
+                lastDate: new Date().toDateString()
+            };
+        }
+
+        function saveData() {
+            localStorage.setItem(STORAGE_KEY, JSON.stringify(data));
+            updateDisplay();
+        }
+
+        function updateDisplay() {
+            document.getElementById('count1').textContent = data.counts[1];
+            document.getElementById('count2').textContent = data.counts[2];
+            document.getElementById('count3').textContent = data.counts[3];
+            document.getElementById('count4').textContent = data.counts[4];
+            document.getElementById('totalVisits').textContent = data.total;
+            document.getElementById('successVisits').textContent = data.success;
+            
+            // Reset today nếu sang ngày mới
+            const today = new Date().toDateString();
+            if (data.lastDate !== today) {
+                data.today = 0;
+                data.lastDate = today;
+                saveData();
+            }
+            document.getElementById('todayVisits').textContent = data.today;
+        }
 
         const websites = [
             { id: 1, name: 'AnnamPC', url: 'https://www.annampc.io.vn' },
@@ -124,6 +168,9 @@
             div.innerHTML = `<span style="color: #6b7280;">[${time}]</span> <span style="color: ${color};">${message}</span>`;
             logBox.appendChild(div);
             logBox.scrollTop = logBox.scrollHeight;
+            if (logBox.children.length > 100) {
+                logBox.removeChild(logBox.children[0]);
+            }
         }
 
         function clearLog() {
@@ -131,146 +178,122 @@
             addLog('🗑️ Đã xóa log', '#6b7280');
         }
 
-        function updateStatus(id, text, color = 'text-gray-500') {
-            document.getElementById(`status${id}`).innerHTML = text;
+        function updateStatus(id, text, color = 'text-green-400') {
+            document.getElementById(`status${id}`).textContent = text;
             document.getElementById(`status${id}`).className = `text-xs mt-1 ${color}`;
         }
 
-        function updateStats(total, success) {
-            document.getElementById('totalVisits').textContent = total || 0;
-            document.getElementById('successVisits').textContent = success || 0;
-            const percent = total > 0 ? Math.round((success / total) * 100) : 0;
-            document.getElementById('progressPercent').textContent = percent + '%';
-        }
-
-        function startTimer() {
-            seconds = 0;
-            clearInterval(timerInterval);
-            timerInterval = setInterval(() => {
-                seconds++;
-                const mins = String(Math.floor(seconds / 60)).padStart(2, '0');
-                const secs = String(seconds % 60).padStart(2, '0');
-                document.getElementById('timerDisplay').textContent = `⏱️ ${mins}:${secs}`;
-            }, 1000);
-        }
-
-        function stopTimer() {
-            clearInterval(timerInterval);
-        }
-
-        function stopBot() {
-            shouldStop = true;
-            addLog('⏹️ Đang dừng bot...', '#fbbf24');
-            document.getElementById('btnStop').classList.add('hidden');
-            document.getElementById('btnRun').classList.remove('hidden');
-            document.getElementById('btnRun').innerHTML = '🚀 CHẠY BOT';
-            document.getElementById('btnRun').disabled = false;
-            document.getElementById('btnRun').className = 'px-12 py-4 bg-gradient-to-r from-blue-500 to-purple-500 rounded-2xl text-xl font-bold hover:scale-105 transition shadow-lg shadow-purple-500/30';
-            stopTimer();
-        }
-
-        async function runBot() {
-            if (isRunning) return;
-            isRunning = true;
-            shouldStop = false;
-
-            const btn = document.getElementById('btnRun');
-            btn.innerHTML = '⏳ ĐANG CHẠY...';
-            btn.disabled = true;
-            btn.className = 'px-12 py-4 bg-gray-600 rounded-2xl text-xl font-bold';
-
-            document.getElementById('btnStop').classList.remove('hidden');
-            document.getElementById('btnMassive').disabled = true;
-            document.getElementById('btnMassive').className = 'ml-4 px-8 py-4 bg-gray-600 rounded-2xl text-xl font-bold';
-
-            startTimer();
-            addLog('🚀 Bắt đầu truy cập 4 website...', '#fbbf24');
-            
-            websites.forEach(w => updateStatus(w.id, '⏳ Đang truy cập...', 'text-yellow-400'));
-
-            let success = 0;
-            let failed = 0;
-
-            for (let i = 0; i < websites.length; i++) {
-                // Kiểm tra dừng
-                if (shouldStop) {
-                    addLog('⏹️ Bot đã dừng!', '#fbbf24');
-                    break;
-                }
-
-                const w = websites[i];
-                try {
-                    addLog(`  📌 Đang truy cập: ${w.name}`, '#fbbf24');
-                    
-                    const res = await fetch(`/api/fetch?url=${encodeURIComponent(w.url)}`);
-                    const data = await res.json();
-                    
-                    if (data.success) {
-                        addLog(`  ✅ ${w.name} - Status: ${data.status} ✅`, '#4ade80');
-                        updateStatus(w.id, `✅ ${data.status}`, 'text-green-400');
-                        success++;
-                    } else {
-                        addLog(`  ❌ ${w.name} - Lỗi: ${data.error}`, '#f87171');
-                        updateStatus(w.id, `❌ ${data.error}`, 'text-red-400');
-                        failed++;
-                    }
-                } catch (e) {
-                    addLog(`  ❌ ${w.name} - Lỗi: ${e.message}`, '#f87171');
-                    updateStatus(w.id, `❌ ${e.message}`, 'text-red-400');
-                    failed++;
-                }
-                await new Promise(r => setTimeout(r, 1000));
-            }
-
-            updateStats(success + failed, success);
-            
-            if (!shouldStop) {
-                addLog(`✅ Hoàn thành: ${success} thành công, ${failed} thất bại`, success === websites.length ? '#4ade80' : '#fbbf24');
-            }
-
-            stopTimer();
-            isRunning = false;
-            
-            document.getElementById('btnStop').classList.add('hidden');
-            document.getElementById('btnRun').innerHTML = '🚀 CHẠY BOT';
-            document.getElementById('btnRun').disabled = false;
-            document.getElementById('btnRun').className = 'px-12 py-4 bg-gradient-to-r from-blue-500 to-purple-500 rounded-2xl text-xl font-bold hover:scale-105 transition shadow-lg shadow-purple-500/30';
-            document.getElementById('btnMassive').disabled = false;
-            document.getElementById('btnMassive').className = 'ml-4 px-8 py-4 bg-gradient-to-r from-green-500 to-teal-500 rounded-2xl text-xl font-bold hover:scale-105 transition shadow-lg shadow-green-500/30';
-        }
-
-        async function runMassive() {
-            if (isRunning) {
-                addLog('⚠️ Bot đang chạy, hãy dừng trước!', '#fbbf24');
-                return;
-            }
-
-            addLog('⚡ BẮT ĐẦU TĂNG TỐC 90K VISITS!', '#f472b6');
-            addLog('🔄 Đang gọi API tăng tốc...', '#fbbf24');
-            
+        async function visitWebsite(id, name, url) {
             try {
-                const res = await fetch('/api/massive?target=90000&countries=50');
-                const data = await res.json();
-                if (data.success) {
-                    addLog(`✅ ${data.message}`, '#4ade80');
-                    addLog(`⏱️ Thời gian: ${data.totalTime || 'N/A'}`, '#60a5fa');
-                    if (data.countries) {
-                        addLog(`🏳️ Đã tăng traffic từ ${data.countries.length} quốc gia`, '#a78bfa');
-                    }
+                const res = await fetch(`/api/fetch?url=${encodeURIComponent(url)}`);
+                const result = await res.json();
+                
+                if (result.success) {
+                    data.counts[id]++;
+                    data.total++;
+                    data.success++;
+                    data.today++;
+                    saveData();
+                    updateDisplay();
+                    addLog(`✅ ${name} - Lượt #${data.counts[id]}`, '#4ade80');
+                    updateStatus(id, `✅ #${data.counts[id]}`, 'text-green-400');
+                    return true;
                 } else {
-                    addLog(`❌ Lỗi: ${data.error}`, '#f87171');
+                    addLog(`❌ ${name} - Lỗi: ${result.error}`, '#f87171');
+                    updateStatus(id, `❌ Lỗi`, 'text-red-400');
+                    return false;
                 }
             } catch (e) {
-                addLog(`❌ Lỗi: ${e.message}`, '#f87171');
+                addLog(`❌ ${name} - Lỗi: ${e.message}`, '#f87171');
+                updateStatus(id, `❌ Lỗi`, 'text-red-400');
+                return false;
+            }
+        }
+
+        async function runCycle() {
+            if (!botRunning) return;
+            
+            addLog('🔄 Bắt đầu chu kỳ truy cập...', '#fbbf24');
+            
+            for (const w of websites) {
+                if (!botRunning) break;
+                await visitWebsite(w.id, w.name, w.url);
+                await new Promise(r => setTimeout(r, 2000));
+            }
+            
+            addLog(`⏳ Tổng: ${data.total} lượt | Hôm nay: ${data.today}`, '#60a5fa');
+            
+            if (botRunning) {
+                // Chạy lại sau 30 giây
+                botInterval = setTimeout(runCycle, 30000);
+            }
+        }
+
+        function toggleBot() {
+            const btn = document.getElementById('btnToggle');
+            
+            if (botRunning) {
+                // TẮT BOT
+                botRunning = false;
+                clearTimeout(botInterval);
+                clearInterval(timerInterval);
+                btn.innerHTML = '▶️ BẬT BOT 24/7';
+                btn.className = 'px-12 py-4 bg-gradient-to-r from-blue-500 to-purple-500 rounded-2xl text-xl font-bold hover:scale-105 transition shadow-lg shadow-purple-500/30';
+                addLog('⏹️ ĐÃ TẮT BOT 24/7!', '#f87171');
+                websites.forEach(w => updateStatus(w.id, '⏸️ Đã dừng', 'text-gray-500'));
+            } else {
+                // BẬT BOT
+                botRunning = true;
+                btn.innerHTML = '⏹️ TẮT BOT 24/7';
+                btn.className = 'px-12 py-4 bg-red-500 rounded-2xl text-xl font-bold hover:scale-105 transition shadow-lg shadow-red-500/30';
+                addLog('🔥 BẬT BOT 24/7 - Tự động truy cập mỗi 30 giây!', '#4ade80');
+                websites.forEach(w => updateStatus(w.id, '✅ Đang chạy', 'text-green-400'));
+                
+                // Bắt đầu timer
+                seconds = 0;
+                clearInterval(timerInterval);
+                timerInterval = setInterval(() => {
+                    seconds++;
+                    const h = String(Math.floor(seconds / 3600)).padStart(2, '0');
+                    const m = String(Math.floor((seconds % 3600) / 60)).padStart(2, '0');
+                    const s = String(seconds % 60).padStart(2, '0');
+                    document.getElementById('runTime').textContent = `${h}:${m}:${s}`;
+                }, 1000);
+                
+                // Chạy ngay lập tức
+                runCycle();
+            }
+        }
+
+        function resetCounts() {
+            if (botRunning) {
+                addLog('⚠️ Hãy tắt bot trước khi reset!', '#fbbf24');
+                return;
+            }
+            
+            if (confirm('Reset toàn bộ dữ liệu?')) {
+                data = {
+                    counts: { 1: 0, 2: 0, 3: 0, 4: 0 },
+                    total: 0,
+                    success: 0,
+                    today: 0,
+                    lastDate: new Date().toDateString()
+                };
+                saveData();
+                updateDisplay();
+                addLog('🔄 Đã reset dữ liệu!', '#fbbf24');
+                websites.forEach(w => updateStatus(w.id, '✅ Đã reset', 'text-gray-500'));
+                document.getElementById('runTime').textContent = '00:00:00';
             }
         }
 
         // Khởi tạo
-        addLog('✅ Bot đã sẵn sàng!', '#4ade80');
-        websites.forEach(w => addLog(`  - ${w.name}: ${w.url}`, '#60a5fa'));
-        addLog('💡 Nhấn "CHẠY BOT" để bắt đầu', '#fbbf24');
-        addLog('💡 Nhấn "TẠM DỪNG" để dừng khi đang chạy', '#fbbf24');
-        addLog('💡 Nhấn "90K" để tăng tốc 90,000 visits', '#f472b6');
+        updateDisplay();
+        addLog('✅ Bot 24/7 đã sẵn sàng!', '#4ade80');
+        addLog('📊 Dữ liệu được lưu trên trình duyệt (localStorage)', '#60a5fa');
+        websites.forEach(w => addLog(`  - ${w.name}: ${data.counts[w.id]} lượt`, '#60a5fa'));
+        addLog('💡 Nhấn "BẬT BOT 24/7" để bắt đầu tự động', '#fbbf24');
+        addLog('⏱️ Bot sẽ tự động truy cập mỗi 30 giây', '#fbbf24');
     </script>
 
 </body>
