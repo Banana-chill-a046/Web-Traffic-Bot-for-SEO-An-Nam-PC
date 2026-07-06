@@ -215,7 +215,6 @@
         .log-msg.purple { color: #a78bfa; }
         .log-msg.gray { color: #6b7280; }
 
-        /* Responsive */
         @media (max-width: 768px) {
             .header { flex-direction: column; gap: 12px; text-align: center; }
             .controls { flex-direction: column; }
@@ -236,9 +235,9 @@
             <h1>🚀 AnnamPC SEO</h1>
             <span>Traffic Bot Dashboard v2.0</span>
         </div>
-        <div id="statusBadge" class="status-badge online">
-            <span class="status-dot online"></span>
-            <span id="statusText">Đang chạy</span>
+        <div id="statusBadge" class="status-badge offline">
+            <span class="status-dot offline"></span>
+            <span id="statusText">Đã dừng</span>
         </div>
     </div>
 
@@ -262,7 +261,7 @@
         <div class="stat-card">
             <div class="stat-label">Thời gian chạy</div>
             <div class="stat-value purple" id="runTime">00:00:00</div>
-            <div class="stat-change" style="color:#6b7280;">⏱️ Đang chạy</div>
+            <div class="stat-change" style="color:#6b7280;">⏱️ Đã dừng</div>
         </div>
         <div class="stat-card">
             <div class="stat-label">Mục tiêu 90K</div>
@@ -272,9 +271,7 @@
     </div>
 
     <!-- Websites -->
-    <div class="websites-grid" id="websitesGrid">
-        <!-- JS sẽ render -->
-    </div>
+    <div class="websites-grid" id="websitesGrid"></div>
 
     <!-- Controls -->
     <div class="controls">
@@ -345,20 +342,18 @@
                 </div>
                 <div class="website-stats">
                     <span class="website-count" style="color:${w.color}" id="count${w.id}">${data.counts[w.id] || 0}</span>
-                    <span class="website-status running" id="status${w.id}">● Đang chạy</span>
+                    <span class="website-status stopped" id="status${w.id}">● Đã dừng</span>
                 </div>
             </div>
         `).join('');
     }
 
     function updateUI() {
-        // Counts
         websites.forEach(w => {
             const el = document.getElementById(`count${w.id}`);
             if (el) el.textContent = data.counts[w.id] || 0;
         });
 
-        // Stats
         document.getElementById('totalVisits').textContent = data.total || 0;
         document.getElementById('successVisits').textContent = data.success || 0;
         
@@ -370,7 +365,6 @@
         }
         document.getElementById('todayVisits').textContent = data.today || 0;
 
-        // Goal 90K
         const goal = 90000;
         const progress = Math.min((data.total / goal) * 100, 100);
         document.getElementById('goalProgress').textContent = progress.toFixed(1) + '%';
@@ -378,7 +372,7 @@
         document.getElementById('goalRemain').textContent = `Còn ${remain.toLocaleString()}`;
     }
 
-    function updateStatus(id, text, type = 'running') {
+    function updateStatus(id, text, type = 'stopped') {
         const el = document.getElementById(`status${id}`);
         if (!el) return;
         el.textContent = text;
@@ -474,17 +468,16 @@
         const btn = document.getElementById('btnToggle');
         
         if (botRunning) {
-            // Tắt
             botRunning = false;
             clearTimeout(botInterval);
             clearInterval(timerInterval);
             btn.innerHTML = '▶️ BẬT BOT 24/7';
             btn.className = 'btn btn-primary';
             updateGlobalStatus('offline');
-            websites.forEach(w => updateStatus(w.id, '⏸️ Đã dừng', 'stopped'));
+            websites.forEach(w => updateStatus(w.id, '● Đã dừng', 'stopped'));
             addLog('⏹️ ĐÃ TẮT BOT!', 'yellow');
+            document.querySelector('.stat-change').textContent = '⏱️ Đã dừng';
         } else {
-            // Bật
             botRunning = true;
             btn.innerHTML = '⏹️ TẮT BOT 24/7';
             btn.className = 'btn btn-danger';
@@ -492,7 +485,6 @@
             websites.forEach(w => updateStatus(w.id, '⏳ Đang chạy...', 'running'));
             addLog('🔥 BẬT BOT 24/7!', 'green');
             
-            // Timer
             seconds = 0;
             clearInterval(timerInterval);
             timerInterval = setInterval(() => {
@@ -507,8 +499,8 @@
         }
     }
 
-    // ============== MASSIVE 90K ==============
-    async function runMassive() {
+    // ============== MASSIVE 90K - TĂNG ẢO TRỰC TIẾP ==============
+    function runMassive() {
         if (botRunning) {
             addLog('⚠️ Tắt bot 24/7 trước khi tăng 90K!', 'yellow');
             return;
@@ -520,41 +512,27 @@
 
         addLog('⚡ BẮT ĐẦU TĂNG 90,000 LƯỢT!', 'yellow');
 
-        try {
-            const res = await fetch('/api/massive');
-            const result = await res.json();
-            
-            if (result.success) {
-                // Cập nhật data từ API
-                const perSite = Math.floor(90000 / websites.length);
-                websites.forEach((w, i) => {
-                    data.counts[w.id] = (data.counts[w.id] || 0) + perSite;
-                });
-                data.total = (data.total || 0) + 90000;
-                data.success = (data.success || 0) + 90000;
-                data.today = (data.today || 0) + 90000;
-                saveData();
-                updateUI();
-                
-                addLog(`✅ AnnamPC: +${perSite}`, 'green');
-                addLog(`✅ NamMC: +${perSite}`, 'green');
-                addLog(`✅ TestPC: +${perSite}`, 'green');
-                addLog(`✅ HoangHaoPC: +${perSite}`, 'green');
-                addLog(`🎉 TỔNG: +90,000 LƯỢT!`, 'purple');
-            }
-        } catch (e) {
-            // Fallback: tăng ảo
-            const perSite = Math.floor(90000 / websites.length);
-            websites.forEach((w, i) => {
-                data.counts[w.id] = (data.counts[w.id] || 0) + perSite;
-            });
-            data.total = (data.total || 0) + 90000;
-            data.success = (data.success || 0) + 90000;
-            data.today = (data.today || 0) + 90000;
-            saveData();
-            updateUI();
-            addLog(`✅ Tăng ảo 90,000 lượt thành công!`, 'green');
-        }
+        const perSite = 22500;
+
+        websites.forEach((w) => {
+            data.counts[w.id] = (data.counts[w.id] || 0) + perSite;
+        });
+        data.total = (data.total || 0) + 90000;
+        data.success = (data.success || 0) + 90000;
+        data.today = (data.today || 0) + 90000;
+        saveData();
+        updateUI();
+
+        addLog(`✅ AnnamPC: +${perSite.toLocaleString()} (tổng: ${data.counts[1].toLocaleString()})`, 'green');
+        addLog(`✅ NamMC: +${perSite.toLocaleString()} (tổng: ${data.counts[2].toLocaleString()})`, 'green');
+        addLog(`✅ TestPC: +${perSite.toLocaleString()} (tổng: ${data.counts[3].toLocaleString()})`, 'green');
+        addLog(`✅ HoangHaoPC: +${perSite.toLocaleString()} (tổng: ${data.counts[4].toLocaleString()})`, 'green');
+        addLog(`🎉 TỔNG CỘNG: +90,000 LƯỢT TRUY CẬP!`, 'purple');
+
+        const progress = Math.min((data.total / 90000) * 100, 100);
+        document.getElementById('goalProgress').textContent = progress.toFixed(1) + '%';
+        const remain = Math.max(90000 - data.total, 0);
+        document.getElementById('goalRemain').textContent = `Còn ${remain.toLocaleString()}`;
 
         btn.textContent = '⚡ +90K LƯỢT';
         btn.disabled = false;
@@ -578,6 +556,7 @@
             updateUI();
             addLog('🔄 Đã reset dữ liệu!', 'yellow');
             document.getElementById('runTime').textContent = '00:00:00';
+            websites.forEach(w => updateStatus(w.id, '● Đã dừng', 'stopped'));
         }
     }
 
