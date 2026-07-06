@@ -27,36 +27,44 @@
 
         <!-- 4 Website -->
         <div class="grid grid-cols-2 md:grid-cols-4 gap-4 mb-8">
-            <div class="bg-white/5 backdrop-blur-lg rounded-xl p-4 text-center border border-white/10 hover:border-blue-500/50 transition">
+            <div class="bg-white/5 backdrop-blur-lg rounded-xl p-4 text-center border border-white/10">
                 <div class="text-2xl">🖥️</div>
                 <div class="text-sm font-semibold text-blue-400">AnnamPC</div>
                 <div class="text-xs text-gray-500">www.annampc.io.vn</div>
+                <div id="status1" class="text-xs mt-1 text-gray-500">⏳ Chờ...</div>
             </div>
-            <div class="bg-white/5 backdrop-blur-lg rounded-xl p-4 text-center border border-white/10 hover:border-green-500/50 transition">
+            <div class="bg-white/5 backdrop-blur-lg rounded-xl p-4 text-center border border-white/10">
                 <div class="text-2xl">🌐</div>
                 <div class="text-sm font-semibold text-green-400">NamMC</div>
                 <div class="text-xs text-gray-500">nammc.nammc.click</div>
+                <div id="status2" class="text-xs mt-1 text-gray-500">⏳ Chờ...</div>
             </div>
-            <div class="bg-white/5 backdrop-blur-lg rounded-xl p-4 text-center border border-white/10 hover:border-yellow-500/50 transition">
+            <div class="bg-white/5 backdrop-blur-lg rounded-xl p-4 text-center border border-white/10">
                 <div class="text-2xl">🧪</div>
                 <div class="text-sm font-semibold text-yellow-400">TestPC</div>
                 <div class="text-xs text-gray-500">testpc.annampc.io.vn</div>
+                <div id="status3" class="text-xs mt-1 text-gray-500">⏳ Chờ...</div>
             </div>
-            <div class="bg-white/5 backdrop-blur-lg rounded-xl p-4 text-center border border-white/10 hover:border-pink-500/50 transition">
+            <div class="bg-white/5 backdrop-blur-lg rounded-xl p-4 text-center border border-white/10">
                 <div class="text-2xl">🏠</div>
                 <div class="text-sm font-semibold text-pink-400">HoangHao</div>
                 <div class="text-xs text-gray-500">www.hoanghaopc.com</div>
+                <div id="status4" class="text-xs mt-1 text-gray-500">⏳ Chờ...</div>
             </div>
         </div>
 
-        <!-- Nút -->
+        <!-- Nút điều khiển -->
         <div class="text-center mb-8">
             <button onclick="runBot()" id="btnRun" 
                     class="px-12 py-4 bg-gradient-to-r from-blue-500 to-purple-500 rounded-2xl text-xl font-bold hover:scale-105 transition shadow-lg shadow-purple-500/30">
                 🚀 CHẠY BOT
             </button>
+            <button onclick="stopBot()" id="btnStop" 
+                    class="ml-4 px-8 py-4 bg-gradient-to-r from-red-500 to-orange-500 rounded-2xl text-xl font-bold hover:scale-105 transition shadow-lg shadow-red-500/30 hidden">
+                ⏹️ TẠM DỪNG
+            </button>
             <button onclick="runMassive()" id="btnMassive" 
-                    class="ml-4 px-8 py-4 bg-gradient-to-r from-red-500 to-orange-500 rounded-2xl text-xl font-bold hover:scale-105 transition shadow-lg shadow-red-500/30">
+                    class="ml-4 px-8 py-4 bg-gradient-to-r from-green-500 to-teal-500 rounded-2xl text-xl font-bold hover:scale-105 transition shadow-lg shadow-green-500/30">
                 ⚡ 90K
             </button>
         </div>
@@ -85,7 +93,10 @@
         <div class="bg-black/50 backdrop-blur-lg rounded-xl p-6 border border-white/10">
             <div class="flex justify-between items-center mb-3">
                 <h3 class="font-semibold text-gray-300">📋 Log</h3>
-                <button onclick="clearLog()" class="text-xs text-gray-500 hover:text-gray-300">Xóa log</button>
+                <div>
+                    <button onclick="clearLog()" class="text-xs text-gray-500 hover:text-gray-300 mr-3">Xóa log</button>
+                    <span id="timerDisplay" class="text-xs text-gray-500">⏱️ 00:00</span>
+                </div>
             </div>
             <div id="logBox" class="bg-black/50 rounded-lg p-4 h-64 overflow-y-auto font-mono text-sm"></div>
         </div>
@@ -94,13 +105,16 @@
 
     <script>
         const logBox = document.getElementById('logBox');
+        let isRunning = false;
+        let shouldStop = false;
+        let timerInterval = null;
+        let seconds = 0;
 
-        // 4 WEBSITE CHÍNH XÁC
         const websites = [
-            { name: 'AnnamPC', url: 'https://www.annampc.io.vn' },
-            { name: 'NamMC', url: 'https://nammc.nammc.click' },
-            { name: 'TestPC', url: 'https://testpc.annampc.io.vn' },
-            { name: 'HoangHaoPC', url: 'https://www.hoanghaopc.com' }
+            { id: 1, name: 'AnnamPC', url: 'https://www.annampc.io.vn' },
+            { id: 2, name: 'NamMC', url: 'https://nammc.nammc.click' },
+            { id: 3, name: 'TestPC', url: 'https://testpc.annampc.io.vn' },
+            { id: 4, name: 'HoangHaoPC', url: 'https://www.hoanghaopc.com' }
         ];
 
         function addLog(message, color = '#4ade80') {
@@ -117,89 +131,146 @@
             addLog('🗑️ Đã xóa log', '#6b7280');
         }
 
+        function updateStatus(id, text, color = 'text-gray-500') {
+            document.getElementById(`status${id}`).innerHTML = text;
+            document.getElementById(`status${id}`).className = `text-xs mt-1 ${color}`;
+        }
+
         function updateStats(total, success) {
             document.getElementById('totalVisits').textContent = total || 0;
             document.getElementById('successVisits').textContent = success || 0;
             const percent = total > 0 ? Math.round((success / total) * 100) : 0;
             document.getElementById('progressPercent').textContent = percent + '%';
-            document.getElementById('countryCount').textContent = websites.length;
+        }
+
+        function startTimer() {
+            seconds = 0;
+            clearInterval(timerInterval);
+            timerInterval = setInterval(() => {
+                seconds++;
+                const mins = String(Math.floor(seconds / 60)).padStart(2, '0');
+                const secs = String(seconds % 60).padStart(2, '0');
+                document.getElementById('timerDisplay').textContent = `⏱️ ${mins}:${secs}`;
+            }, 1000);
+        }
+
+        function stopTimer() {
+            clearInterval(timerInterval);
+        }
+
+        function stopBot() {
+            shouldStop = true;
+            addLog('⏹️ Đang dừng bot...', '#fbbf24');
+            document.getElementById('btnStop').classList.add('hidden');
+            document.getElementById('btnRun').classList.remove('hidden');
+            document.getElementById('btnRun').innerHTML = '🚀 CHẠY BOT';
+            document.getElementById('btnRun').disabled = false;
+            document.getElementById('btnRun').className = 'px-12 py-4 bg-gradient-to-r from-blue-500 to-purple-500 rounded-2xl text-xl font-bold hover:scale-105 transition shadow-lg shadow-purple-500/30';
+            stopTimer();
         }
 
         async function runBot() {
+            if (isRunning) return;
+            isRunning = true;
+            shouldStop = false;
+
             const btn = document.getElementById('btnRun');
             btn.innerHTML = '⏳ ĐANG CHẠY...';
             btn.disabled = true;
             btn.className = 'px-12 py-4 bg-gray-600 rounded-2xl text-xl font-bold';
 
+            document.getElementById('btnStop').classList.remove('hidden');
+            document.getElementById('btnMassive').disabled = true;
+            document.getElementById('btnMassive').className = 'ml-4 px-8 py-4 bg-gray-600 rounded-2xl text-xl font-bold';
+
+            startTimer();
             addLog('🚀 Bắt đầu truy cập 4 website...', '#fbbf24');
-            addLog('📋 Danh sách:', '#60a5fa');
-            websites.forEach(w => addLog(`  - ${w.name}: ${w.url}`, '#60a5fa'));
+            
+            websites.forEach(w => updateStatus(w.id, '⏳ Đang truy cập...', 'text-yellow-400'));
 
             let success = 0;
             let failed = 0;
 
             for (let i = 0; i < websites.length; i++) {
+                // Kiểm tra dừng
+                if (shouldStop) {
+                    addLog('⏹️ Bot đã dừng!', '#fbbf24');
+                    break;
+                }
+
                 const w = websites[i];
                 try {
                     addLog(`  📌 Đang truy cập: ${w.name}`, '#fbbf24');
-                    const res = await fetch(w.url);
-                    if (res.ok) {
-                        addLog(`  ✅ ${w.name} - Status: ${res.status} ✅`, '#4ade80');
+                    
+                    const res = await fetch(`/api/fetch?url=${encodeURIComponent(w.url)}`);
+                    const data = await res.json();
+                    
+                    if (data.success) {
+                        addLog(`  ✅ ${w.name} - Status: ${data.status} ✅`, '#4ade80');
+                        updateStatus(w.id, `✅ ${data.status}`, 'text-green-400');
                         success++;
                     } else {
-                        addLog(`  ❌ ${w.name} - Status: ${res.status}`, '#f87171');
+                        addLog(`  ❌ ${w.name} - Lỗi: ${data.error}`, '#f87171');
+                        updateStatus(w.id, `❌ ${data.error}`, 'text-red-400');
                         failed++;
                     }
                 } catch (e) {
                     addLog(`  ❌ ${w.name} - Lỗi: ${e.message}`, '#f87171');
+                    updateStatus(w.id, `❌ ${e.message}`, 'text-red-400');
                     failed++;
                 }
-                await new Promise(r => setTimeout(r, 1500));
+                await new Promise(r => setTimeout(r, 1000));
             }
 
             updateStats(success + failed, success);
-            addLog(`✅ Hoàn thành: ${success} thành công, ${failed} thất bại`, success === websites.length ? '#4ade80' : '#fbbf24');
+            
+            if (!shouldStop) {
+                addLog(`✅ Hoàn thành: ${success} thành công, ${failed} thất bại`, success === websites.length ? '#4ade80' : '#fbbf24');
+            }
 
-            btn.innerHTML = '🚀 CHẠY BOT';
-            btn.disabled = false;
-            btn.className = 'px-12 py-4 bg-gradient-to-r from-blue-500 to-purple-500 rounded-2xl text-xl font-bold hover:scale-105 transition shadow-lg shadow-purple-500/30';
+            stopTimer();
+            isRunning = false;
+            
+            document.getElementById('btnStop').classList.add('hidden');
+            document.getElementById('btnRun').innerHTML = '🚀 CHẠY BOT';
+            document.getElementById('btnRun').disabled = false;
+            document.getElementById('btnRun').className = 'px-12 py-4 bg-gradient-to-r from-blue-500 to-purple-500 rounded-2xl text-xl font-bold hover:scale-105 transition shadow-lg shadow-purple-500/30';
+            document.getElementById('btnMassive').disabled = false;
+            document.getElementById('btnMassive').className = 'ml-4 px-8 py-4 bg-gradient-to-r from-green-500 to-teal-500 rounded-2xl text-xl font-bold hover:scale-105 transition shadow-lg shadow-green-500/30';
         }
 
         async function runMassive() {
-            const btn = document.getElementById('btnMassive');
-            btn.innerHTML = '⏳ ĐANG CHẠY...';
-            btn.disabled = true;
-            btn.className = 'ml-4 px-8 py-4 bg-gray-600 rounded-2xl text-xl font-bold';
+            if (isRunning) {
+                addLog('⚠️ Bot đang chạy, hãy dừng trước!', '#fbbf24');
+                return;
+            }
 
             addLog('⚡ BẮT ĐẦU TĂNG TỐC 90K VISITS!', '#f472b6');
             addLog('🔄 Đang gọi API tăng tốc...', '#fbbf24');
-
+            
             try {
-                const res = await fetch('/api/bot');
+                const res = await fetch('/api/massive?target=90000&countries=50');
                 const data = await res.json();
-                addLog(`✅ ${data.message}`, '#4ade80');
-                if (data.websites) {
-                    data.websites.forEach((url, i) => {
-                        addLog(`  ${i+1}. ${url}`, '#60a5fa');
-                    });
+                if (data.success) {
+                    addLog(`✅ ${data.message}`, '#4ade80');
+                    addLog(`⏱️ Thời gian: ${data.totalTime || 'N/A'}`, '#60a5fa');
+                    if (data.countries) {
+                        addLog(`🏳️ Đã tăng traffic từ ${data.countries.length} quốc gia`, '#a78bfa');
+                    }
+                } else {
+                    addLog(`❌ Lỗi: ${data.error}`, '#f87171');
                 }
             } catch (e) {
                 addLog(`❌ Lỗi: ${e.message}`, '#f87171');
-                addLog('🔄 Chuyển sang chạy bot thường...', '#fbbf24');
-                await runBot();
             }
-
-            btn.innerHTML = '⚡ 90K';
-            btn.disabled = false;
-            btn.className = 'ml-4 px-8 py-4 bg-gradient-to-r from-red-500 to-orange-500 rounded-2xl text-xl font-bold hover:scale-105 transition shadow-lg shadow-red-500/30';
         }
 
         // Khởi tạo
         addLog('✅ Bot đã sẵn sàng!', '#4ade80');
-        addLog('📋 4 Website:', '#60a5fa');
         websites.forEach(w => addLog(`  - ${w.name}: ${w.url}`, '#60a5fa'));
         addLog('💡 Nhấn "CHẠY BOT" để bắt đầu', '#fbbf24');
-        addLog('💡 Nhấn "90K" để tăng tốc', '#f472b6');
+        addLog('💡 Nhấn "TẠM DỪNG" để dừng khi đang chạy', '#fbbf24');
+        addLog('💡 Nhấn "90K" để tăng tốc 90,000 visits', '#f472b6');
     </script>
 
 </body>
