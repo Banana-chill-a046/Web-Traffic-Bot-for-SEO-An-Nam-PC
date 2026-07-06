@@ -3,7 +3,9 @@ const config = {
 };
 
 export default async function handler(req, res) {
+  // Cho phép CORS
   res.setHeader('Access-Control-Allow-Origin', '*');
+  res.setHeader('Content-Type', 'application/json');
   
   try {
     const results = [];
@@ -11,22 +13,39 @@ export default async function handler(req, res) {
     for (const url of config.urls) {
       try {
         const response = await fetch(url);
+        const status = response.status;
+        
         results.push({
-          url,
-          status: response.status,
-          success: response.status === 200
+          url: url,
+          status: status,
+          success: status === 200 || status === 304,
+          timestamp: new Date().toISOString()
         });
-      } catch (e) {
-        results.push({ url, success: false, error: e.message });
+        
+      } catch (error) {
+        results.push({
+          url: url,
+          success: false,
+          error: error.message,
+          timestamp: new Date().toISOString()
+        });
       }
     }
     
+    // Trả về JSON đúng format
     res.status(200).json({
       success: true,
-      message: `Đã truy cập ${results.length} URLs`,
-      results
+      message: `✅ Đã truy cập ${results.length} URLs`,
+      total: results.length,
+      results: results,
+      timestamp: new Date().toISOString()
     });
+    
   } catch (error) {
-    res.status(500).json({ success: false, error: error.message });
+    res.status(500).json({
+      success: false,
+      error: error.message,
+      timestamp: new Date().toISOString()
+    });
   }
 }
